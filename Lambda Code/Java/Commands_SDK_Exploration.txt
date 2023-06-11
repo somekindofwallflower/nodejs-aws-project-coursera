@@ -1,0 +1,31 @@
+Check Java Version
+    java -version
+    
+Update Java Version
+    sudo yum install java-1.8.0-openjdk-devel
+    
+Configure Java 
+    sudo alternatives --config java
+
+Remove Old Java Version
+    sudo yum remove java-1.7.0-openjdk-devel
+    
+Check Version  
+    java -version
+    
+Download Maven
+    sudo wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo 
+    sudo sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
+
+Install Apache Maven
+    sudo yum install -y apache-maven
+    
+Chevk Maven Version
+    mvn -v
+    
+Set Java Home
+    export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.51.amzn1.x86_64
+    
+Check Maven Version
+    mvn -v
+    

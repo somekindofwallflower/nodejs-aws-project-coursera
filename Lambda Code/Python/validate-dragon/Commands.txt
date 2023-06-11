@@ -1,0 +1,17 @@
+Download dependencies into folder
+    sudo pip install --target ./validate-dragon-package boto3
+
+Zip up your code (with dependencies)
+    zip -r9 ${OLDPWD}/ pythonValidateDragonFunction.zip .
+    
+Add python script to zip
+    zip -g pythonValidateDragonFunction.zip validateDragon.py 
+    
+Create Lambda Function
+    aws lambda create-function --function-name validate-dragon --runtime python3.6  --role <IAM ROLE ARN> --handler validateDragon.validate --publish --zip-file fileb://pythonValidateDragonFunction.zip
+
+Invoke Lambda Function
+    aws lambda invoke --function-name validate-dragon output.txt --payload file://duplicateDragonPayload.json
+    
+Update Lambda Code
+    aws lambda update-function-code --function-name validate-dragon --zip-file fileb://pythonValidateDragonFunction.zip --publish

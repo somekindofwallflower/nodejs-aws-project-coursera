@@ -1,0 +1,16 @@
+Install the AWS SDK into the folder
+    npm install --prefix . aws-sdk
+
+Zip up your code 
+    zip -r ../nodeAddDragonFunction.zip .
+
+Create Lambda Function
+
+    aws lambda create-function --function-name add-dragon --runtime nodejs10.x  --role <IAM ROLE ARN> --handler addDragon.handler --publish --zip-file fileb://nodeAddDragonFunction.zip
+      
+Invoke
+
+    aws lambda invoke --function-name add-dragon addOutput.txt --payload file://newDragonPayload.json
+
+Update Lambda Code
+    aws lambda update-function-code --function-name add-dragon --zip-file fileb://nodeAddDragonFunction.zip --publish

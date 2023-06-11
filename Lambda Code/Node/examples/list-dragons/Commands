@@ -1,0 +1,14 @@
+Create new folder
+Copy code into folder
+
+Download SDK to deployment package folder
+    npm install --prefix . aws-sdk
+
+Zip up deployment package
+    zip -r ../nodeListDragonsFunction.zip .
+
+Create Lambda Function
+    aws lambda create-function --function-name list-dragons --runtime nodejs10.x  --role <IAM ROLE ARN> --handler listDragonsLambda.handler --publish --zip-file fileb://nodeListDragonsFunction.zip
+
+Invoke Function 
+    aws lambda invoke --function-name list-dragons output.txt

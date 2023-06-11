@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Dragon",
+  "type": "object",
+  "properties": {
+    "dragonName": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "family": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "neighborhood": {
+      "type": "string"
+    },
+    "reportingPhoneNumber": {
+      "type": "string"
+    },
+    "confirmationRequired": {
+      "type": "boolean"
+    }
+  }
+}

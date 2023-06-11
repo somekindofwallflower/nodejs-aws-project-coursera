@@ -1,0 +1,11 @@
+{
+  "dragon_name_str": "Greta",
+  "description_str": "New dragon",
+  "family_str": "green",
+  "location_city_str": "Houston",
+  "location_country_str": "USA",
+  "location_state_str": "TX",
+  "location_neighborhood_str": "Downtown",
+  "reportingPhoneNumber": "15555555555",
+  "confirmationRequired": false
+}

@@ -1,0 +1,17 @@
+Download dependencies into folder
+    sudo pip install --target ./list-dragons-package boto3
+
+Zip up your code (with dependencies)
+    zip -r9 ${OLDPWD}/ pythonlistDragonsFunction.zip .
+    
+Add python script to zip
+    zip -g pythonlistDragonsFunction.zip listDragons.py 
+    
+Create Lambda Function
+    aws lambda create-function --function-name list-dragons --runtime python3.6  --role <IAM ROLE ARN> --handler listDragons.listDragons --publish --zip-file fileb://pythonlistDragonsFunction.zip
+
+Invoke Lambda Function
+    aws lambda invoke --function-name list-dragons output.txt
+    
+Update Lambda Code
+    aws lambda update-function-code --function-name list-dragons --zip-file fileb://pythonlistDragonsFunction.zip --publish

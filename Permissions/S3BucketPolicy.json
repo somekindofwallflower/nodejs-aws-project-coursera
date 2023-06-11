@@ -1,0 +1,21 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowS3ReadAccess",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": [
+                    "<VALIDATE LAMBDA FUNCTION IAM ROLE ARN>",
+                    "<ADD LAMBDA FUNCTION IAM ROLE ARN>",
+                    "<LIST LAMBDA FUNCTION IAM ROLE ARN>"
+                ]
+            },
+            "Action": "s3:Get*",
+            "Resource": [
+                "arn:aws:s3:::<BUCKET NAME>",
+                "arn:aws:s3:::<BUCKET NAME>/*"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "dragonName": "Frank",
+    "description": "This dragon is brand new, we don't know much about it yet.",
+    "family": "purple",
+    "city": "Seattle",
+    "country": "USA",
+    "state": "WA",
+    "neighborhood": "Downtown",
+    "reportingPhoneNumber": "15555555555",
+    "confirmationRequired": false
+   }

@@ -1,0 +1,17 @@
+Download dependencies into folder
+    sudo pip install --target ./add-dragon-package boto3
+
+Zip up your code (with dependencies)
+    zip -r9 ${OLDPWD}/ pythonAddDragonFunction.zip .
+    
+Add python script to zip
+    zip -g pythonAddDragonFunction.zip addDragon.py 
+    
+Create Lambda Function
+    aws lambda create-function --function-name add-dragon --runtime python3.6  --role <IAM ROLE ARN> --handler addDragon.addDragonToFile --publish --zip-file fileb://pythonAddDragonFunction.zip
+
+Invoke Lambda Function
+    aws lambda invoke --function-name add-dragon output.txt --payload file://newDragonPayload.json
+    
+Update Lambda Code
+    aws lambda update-function-code --function-name add-dragon --zip-file fileb://pythonAddDragonFunction.zip --publish

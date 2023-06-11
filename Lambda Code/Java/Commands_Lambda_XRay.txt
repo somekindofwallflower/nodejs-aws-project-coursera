@@ -1,0 +1,24 @@
+Make sure Java Home is set  (you might need to change this if you are using a different version of java)
+    export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
+    
+Install Gradle if it's not installed
+    sdk install gradle 6.4.1
+    
+Create Zip
+    gradle build
+    
+Create Lambda Function
+    aws lambda create-function --function-name listDragons --runtime java8  --role <IAM ROLE ARN> --handler com.mycompany.app.App::handleRequest --publish --zip-file fileb://my-app.zip --timeout 90 --memory-size 448
+    aws lambda create-function --function-name validateDragon --runtime java8  --role <IAM ROLE ARN> --handler com.mycompany.app.App::handleRequest --publish --zip-file fileb://validate-dragon.zip --timeout 90 --memory-size 448
+    aws lambda create-function --function-name addDragon --runtime java8  --role <IAM ROLE ARN> --handler com.mycompany.app.App::handleRequest --publish --zip-file fileb://add-dragon.zip --timeout 90 --memory-size 448
+
+Invoke Lambda Function
+    aws lambda invoke --function-name listDragons output.txt
+    aws lambda invoke --function-name validateDragon output.txt --payload file://dragon_payload.json
+    aws lambda invoke --function-name addDragon output.txt --payload file://dragon_payload.json
+
+    
+Update Lambda Function
+    aws lambda update-function-code --function-name validateDragon --publish --zip-file fileb://validate-dragon.zip
+    aws lambda update-function-code --function-name addDragon --publish --zip-file fileb://add-dragon.zip
+    aws lambda update-function-code --function-name listDragons --publish --zip-file fileb://my-app.zip

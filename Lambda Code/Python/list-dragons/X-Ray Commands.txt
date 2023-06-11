@@ -1,0 +1,26 @@
+Download X-Ray SDK
+    sudo pip install aws-xray-sdk
+    
+Import for python script
+    from aws_xray_sdk.core import patch_all
+    
+Call patch all method
+    patch_all() 
+    
+Download Xray SDK to target
+    sudo pip install --target ./list-dragons-package aws-xray-sdk
+    sudo pip install --target ./list-dragons-package boto3
+    
+Zip up package folder  
+    zip -r9 ${OLDPWD}/listDragonsPythonFunction.zip .
+    
+Add python script to zip
+    zip -g listDragonsPythonFunction.zip listDragons.py 
+    
+Update Function Code
+    aws lambda update-function-code --function-name list-dragons --zip-file fileb://listDragonsPythonFunction.zip --publish
+
+Update Function Configuration
+    aws lambda update-function-configuration --function-name list-dragons --tracing-config Mode=Active
+
+

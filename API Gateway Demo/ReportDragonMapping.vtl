@@ -1,0 +1,10 @@
+#set($data = $input.path('$'))
+
+#set($input = " { ""dragon_name_str"" : ""$data.dragonName"", ""description_str"" : ""$data.description"", ""family_str"" : ""$data.family"", ""location_city_str"" : ""$data.city"", ""location_country_str"" : ""$data.country"", ""location_state_str"" : ""$data.state"", ""location_neighborhood_str"" : ""$data.neighborhood"", ""reportingPhoneNumber"" : ""$data.reportingPhoneNumber"", ""confirmationRequired"" : $data.confirmationRequired}")
+
+
+{ 
+    "input": "$util.escapeJavaScript($input).replaceAll("\\'", "'")",
+     
+    "stateMachineArn": "<replace with state machine ARN>"
+}

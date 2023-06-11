@@ -1,0 +1,29 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile (
+        'com.amazonaws:aws-lambda-java-core:1.2.0',
+        'com.amazonaws:aws-java-sdk-s3:1.11.749',
+        'com.amazonaws:aws-java-sdk-ssm:1.11.749',
+        'com.amazonaws:aws-lambda-java-events:2.2.2',
+        'commons-io:commons-io:+',
+        'com.google.code.gson:gson:2.8.6',
+        'com.amazonaws:aws-xray-recorder-sdk-core:2.4.0',
+        'com.amazonaws:aws-xray-recorder-sdk-aws-sdk:2.4.0',
+        'com.amazonaws:aws-xray-recorder-sdk-aws-sdk-instrumentor:2.4.0'
+    )
+}
+
+task buildZip(type: Zip) {
+    from compileJava
+    from processResources
+    into('lib') {
+        from configurations.runtimeClasspath
+    }
+}
+
+build.dependsOn buildZip
